@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal RH - Login</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #1e3a5f 0%, #0f2744 50%, #0a1929 100%);
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .input-focus:focus {
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    }
+    
+    .btn-gradient {
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-gradient:hover {
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+    }
+    
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
+    }
+    
+    .logo-icon {
+      animation: pulse-subtle 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-subtle {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+</head>
+<body class="h-full">
+  <div id="app-container" class="h-full w-full gradient-bg relative overflow-auto">
+    <!-- Floating decorative shapes -->
+    <div class="floating-shape w-64 h-64 bg-blue-400 -top-20 -left-20" style="animation-delay: 0s;"></div>
+    <div class="floating-shape w-48 h-48 bg-cyan-400 top-1/4 -right-10" style="animation-delay: 2s;"></div>
+    <div class="floating-shape w-32 h-32 bg-indigo-400 bottom-20 left-1/4" style="animation-delay: 4s;"></div>
+    
+    <div class="min-h-full flex items-center justify-center p-6 relative z-10">
+      <div class="w-full max-w-md">
+        <!-- Logo Section -->
+        <div class="text-center mb-8">
+          <div class="logo-icon inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white shadow-2xl mb-4">
+            <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <h2 id="company-name" class="text-white text-xl font-semibold tracking-wide">Sua Empresa</h2>
+        </div>
+        
+        <!-- Login Card -->
+        <div class="glass-card rounded-3xl shadow-2xl p-8">
+          <div class="text-center mb-8">
+            <h1 id="welcome-title" class="text-2xl font-bold text-gray-800 mb-2">Bem-vindo ao Portal RH</h1>
+            <p id="subtitle-text" class="text-gray-500">Acesse sua conta para continuar</p>
+          </div>
+          
+          <form id="login-form" class="space-y-5">
+            <!-- Email Field -->
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                E-mail corporativo
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/>
+                  </svg>
+                </div>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email"
+                  class="input-focus w-full pl-12 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-all"
+                  placeholder="seu.email@empresa.com"
+                  required
+                >
+              </div>
+            </div>
+            
+            <!-- Password Field - DEMO ONLY -->
+            <div>
+              <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                Senha
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                  </svg>
+                </div>
+                <input 
+                  type="password" 
+                  id="password" 
+                  name="password"
+                  class="input-focus w-full pl-12 pr-12 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-all"
+                  placeholder="••••••••"
+                  required
+                >
+                <button 
+                  type="button" 
+                  id="toggle-password"
+                  class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <svg id="eye-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Remember & Forgot -->
+            <div class="flex items-center justify-between">
+              <label class="flex items-center cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                <span class="ml-2 text-sm text-gray-600">Lembrar-me</span>
+              </label>
+              <button type="button" class="text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors">
+                Esqueceu a senha?
+              </button>
+            </div>
+            
+            <!-- Submit Button -->
+            <button 
+              type="submit" 
+              id="submit-btn"
+              class="btn-gradient w-full py-4 text-white font-semibold rounded-xl shadow-lg"
+            >
+              Entrar
+            </button>
+            
+            <!-- Demo Notice -->
+            <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-xl">
+              <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <p class="text-xs text-amber-700">
+                  <strong>Demonstração:</strong> Este é um protótipo visual. Nenhum dado é processado ou armazenado.
+                </p>
+              </div>
+            </div>
+          </form>
+          
+          <!-- Success Message (Hidden by default) -->
+          <div id="success-message" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
+              <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Login Simulado!</h3>
+            <p class="text-gray-500 text-sm">Esta é uma demonstração visual do painel de RH.</p>
+            <button 
+              type="button" 
+              id="back-btn"
+              class="mt-4 px-6 py-2 text-blue-600 font-medium hover:bg-blue-50 rounded-lg transition-colors"
+            >
+              Voltar ao login
+            </button>
+          </div>
+        </div>
+        
+        <!-- Footer -->
+        <p class="text-center text-white/60 text-sm mt-6">
+          © 2024 Portal RH • Todos os direitos reservados
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const defaultConfig = {
+      company_name: 'Sua Empresa',
+      welcome_title: 'Bem-vindo ao Portal RH',
+      subtitle_text: 'Acesse sua conta para continuar',
+      button_text: 'Entrar',
+      primary_color: '#1e3a5f',
+      surface_color: '#ffffff',
+      text_color: '#1f2937',
+      accent_color: '#3b82f6',
+      muted_color: '#6b7280',
+      font_family: 'Plus Jakarta Sans',
+      font_size: 16
+    };
+
+    // Toggle password visibility
+    const togglePassword = document.getElementById('toggle-password');
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eye-icon');
+    
+    togglePassword.addEventListener('click', () => {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      
+      if (type === 'text') {
+        eyeIcon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+        `;
+      } else {
+        eyeIcon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+        `;
+      }
+    });
+
+    // Form submission handler
+    const loginForm = document.getElementById('login-form');
+    const successMessage = document.getElementById('success-message');
+    const backBtn = document.getElementById('back-btn');
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      loginForm.classList.add('hidden');
+      successMessage.classList.remove('hidden');
+    });
+
+    backBtn.addEventListener('click', () => {
+      successMessage.classList.add('hidden');
+      loginForm.classList.remove('hidden');
+      loginForm.reset();
+    });
+
+    // Element SDK initialization
+    async function onConfigChange(config) {
+      const companyName = document.getElementById('company-name');
+      const welcomeTitle = document.getElementById('welcome-title');
+      const subtitleText = document.getElementById('subtitle-text');
+      const submitBtn = document.getElementById('submit-btn');
+
+      companyName.textContent = config.company_name || defaultConfig.company_name;
+      welcomeTitle.textContent = config.welcome_title || defaultConfig.welcome_title;
+      subtitleText.textContent = config.subtitle_text || defaultConfig.subtitle_text;
+      submitBtn.textContent = config.button_text || defaultConfig.button_text;
+
+      // Apply font
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      document.body.style.fontFamily = `${fontFamily}, sans-serif`;
+
+      // Apply font size
+      const baseSize = config.font_size || defaultConfig.font_size;
+      welcomeTitle.style.fontSize = `${baseSize * 1.5}px`;
+      subtitleText.style.fontSize = `${baseSize * 0.875}px`;
+      companyName.style.fontSize = `${baseSize * 1.25}px`;
+
+      // Apply colors
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const mutedColor = config.muted_color || defaultConfig.muted_color;
+
+      document.getElementById('app-container').style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${adjustColor(primaryColor, -30)} 100%)`;
+      
+      welcomeTitle.style.color = textColor;
+      subtitleText.style.color = mutedColor;
+      
+      submitBtn.style.background = `linear-gradient(135deg, ${accentColor} 0%, ${adjustColor(accentColor, -20)} 100%)`;
+    }
+
+    function adjustColor(hex, percent) {
+      const num = parseInt(hex.replace('#', ''), 16);
+      const amt = Math.round(2.55 * percent);
+      const R = Math.max(0, Math.min(255, (num >> 16) + amt));
+      const G = Math.max(0, Math.min(255, ((num >> 8) & 0x00FF) + amt));
+      const B = Math.max(0, Math.min(255, (num & 0x0000FF) + amt));
+      return `#${(0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1)}`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => config.muted_color || defaultConfig.muted_color,
+            set: (value) => {
+              config.muted_color = value;
+              window.elementSdk.setConfig({ muted_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['company_name', config.company_name || defaultConfig.company_name],
+        ['welcome_title', config.welcome_title || defaultConfig.welcome_title],
+        ['subtitle_text', config.subtitle_text || defaultConfig.subtitle_text],
+        ['button_text', config.button_text || defaultConfig.button_text]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cf7b01634574fb4',t:'MTc3MTM1NjUwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
